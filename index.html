@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Afoods – Cuisine saine</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="hero-card" id="accueil">
+  <header class="nav">
+    <a class="logo" href="#accueil">afoods</a>
+    <nav>
+      <a class="on" href="#accueil">Accueil</a>
+      <a href="#carte">Carte</a>
+      <a href="#planificateur">Mon menu</a>
+      <button class="icon-btn" data-cart aria-label="Ouvrir le panier">🛒<span class="cart-n">0</span></button>
+    </nav>
+    <div class="auth">
+      <button class="btn-s outline" data-soon>S'inscrire</button>
+      <button class="btn-s solid" data-soon>Connexion</button>
+    </div>
+  </header>
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Commandez <em>votre</em><br><em>bowl</em> sain <span>préféré</span></h1>
+      <p>Des plats frais et savoureux, adaptés à vos envies. Composez votre menu du jour ou de la semaine, livré en un clin d'œil.</p>
+      <div class="hero-actions">
+        <a class="btn ghost" href="#carte">Voir la carte</a>
+        <a class="btn dark" href="#planificateur"><i class="dot">→</i> Créer mon menu</a>
+      </div>
+      <div class="caps-wrap">
+        <button class="arrow" id="capPrev" aria-label="Précédent">‹</button>
+        <div class="caps" id="caps"></div>
+        <button class="arrow" id="capNext" aria-label="Suivant">›</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="plate"><img src="images/hero.jpg" alt="Buddha bowl coloré"></div>
+      <div class="badge"><span>Buddha bowl <b>★ 4.8</b></span><small>⏱ 8 – 10 min</small></div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section id="carte" class="section">
+    <h2>Notre carte</h2>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="dishes"></div>
+  </section>
+
+  <section id="planificateur" class="section planner">
+    <h2>Mon menu sur mesure</h2>
+    <p class="sub">Dites-nous ce que vous voulez, on compose le reste.</p>
+    <form id="planForm" class="plan-form">
+      <label>Durée
+        <select id="period"><option value="1">Un jour</option><option value="7" selected>Une semaine</option></select>
+      </label>
+      <label>Régime
+        <select id="diet">
+          <option value="all">Tout</option>
+          <option value="vegetarien">Végétarien</option>
+          <option value="vegan">Vegan</option>
+          <option value="proteine">Riche en protéines</option>
+          <option value="leger">Léger</option>
+          <option value="sans-gluten">Sans gluten</option>
+        </select>
+      </label>
+      <label>Calories / jour
+        <input type="number" id="kcal" value="1800" min="1000" max="3500" step="50">
+      </label>
+      <label>Repas
+        <select id="meals"><option value="2">Déjeuner + Dîner</option><option value="3" selected>Petit-déj + Déjeuner + Dîner</option></select>
+      </label>
+      <button class="btn primary" type="submit">Générer</button>
+    </form>
+    <div id="plan"></div>
+    <div class="plan-actions" id="planActions" hidden>
+      <strong id="planTotal"></strong>
+      <button class="btn primary" id="orderPlan">Commander tout le menu</button>
+    </div>
+  </section>
+</main>
+
+<footer>© Afoods – Mangez bien, vivez bien 🌿<br><small>Photos : TheMealDB ; Buddha bowl © PizzaMan ; attiéké © Prillytee et Kod B ; CC BY-SA 4.0 (Wikimedia Commons)</small></footer>
+
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head"><h3>Mon panier</h3><button id="closeCart" aria-label="Fermer">✕</button></div>
+  <ul id="cartList"></ul>
+  <div class="drawer-foot">
+    <div class="total">Total <b id="cartTotal">0,00 €</b></div>
+    <button class="btn primary full" id="checkout">Commander</button>
+    <button class="btn ghost full" id="clearCart">Vider</button>
+  </div>
+</aside>
+<button class="fab" data-cart aria-label="Ouvrir le panier" hidden>🛒<span class="cart-n">0</span></button>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
