@@ -153,7 +153,8 @@ function renderPlan(){
         <button class="swap" data-d="${di}" data-m="${mi}" title="Changer ce plat" aria-label="Changer ce plat">🔄</button></div>`; }).join("") + `</div>`;
   }).join("") + `</div>`;
   const price = plan.days.flatMap(d=>d.meals).reduce((s,i)=>s+byId(i).price,0);
-  $("#planTotal").textContent = `Total du menu : ${eur(price)}`;
+  const kcalAll = plan.days.flatMap(d=>d.meals).reduce((s,i)=>s+byId(i).kcal,0);
+  $("#planTotal").textContent = `Total du menu : ${eur(price)} · moyenne ${Math.round(kcalAll/plan.days.length)} kcal/jour`;
   $("#planActions").hidden = false;
 }
 $("#planForm").addEventListener("submit", e => { e.preventDefault(); generate(); });
