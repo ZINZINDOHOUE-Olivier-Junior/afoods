@@ -140,6 +140,7 @@ function generate(){
   }
   plan = {days, meals: n, diet, kcal};
   save("plan", plan); renderPlan();
+  toast(nDays === 1 ? "Menu du jour prêt !" : "Menu de la semaine prêt !");
 }
 function renderPlan(){
   if(!plan){ $("#plan").innerHTML = `<p class="empty">Choisissez vos préférences puis cliquez sur « Générer ».</p>`; $("#planActions").hidden = true; return; }
